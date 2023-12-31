@@ -24,7 +24,6 @@ section, summary, time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;}
-@import url('file:///C:\Users\Admin\Documents\GitHub\GrinningCat.github.io\assets\css\noscript.css');
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -1201,7 +1200,7 @@ input, select, textarea {
 		-ms-justify-content: space-between;
 		justify-content: space-between;
 		position: relative;
-		min-height: 100vh;
+		min-height: 50vh;
 		width: 100%;
 		padding: 4rem 2rem;
 		z-index: 3;
