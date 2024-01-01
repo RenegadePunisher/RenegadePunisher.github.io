@@ -1234,9 +1234,9 @@ input, select, textarea {
 
 		@media screen and (orientation: portrait) {
 			#wrapper {
-				min-height: 100vw;
-				width: 100vh;
-				height: 100vw;
+				min-height: 50vw;
+				width: 50vh;
+				height: 50vw;
 			}
 		}
 		@media screen and (orientation: landscape) {
