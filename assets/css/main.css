@@ -1232,6 +1232,12 @@ input, select, textarea {
 
 		}
 
+		@media screen and (orientation: portrait) {
+			#wrapper {
+				width: 100%;
+			}
+}
+
 /* Header */
 
 	#header {
