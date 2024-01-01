@@ -1234,11 +1234,23 @@ input, select, textarea {
 
 		@media screen and (orientation: portrait) {
 			#wrapper {
+				transform: rotate(-90deg);
+				transform-origin: left top;
+				width: 100vh;
+				height: 100vw;
+				overflow-x: hidden;
+				position: absolute;
+				top: 100%;
+				left: 0;
+			}
+		}
+		@media screen and (orientation: landscape) {
+			#wrapper {
 				width: 100%;
 			}
 }
 
-/* Header */
+	/* Header */
 
 	#header {
 		display: -moz-flex;
@@ -1394,117 +1406,114 @@ input, select, textarea {
 			border-left: 0;
 		}
 
-		body.is-article-visible #header {
-			-moz-transform: scale(0.95);
-			-webkit-transform: scale(0.95);
-			-ms-transform: scale(0.95);
-			transform: scale(0.95);
-			-moz-filter: blur(0.1rem);
-			-webkit-filter: blur(0.1rem);
-			-ms-filter: blur(0.1rem);
-			filter: blur(0.1rem);
+	body.is-article-visible #header {
+		-moz-transform: scale(0.95);
+		-webkit-transform: scale(0.95);
+		-ms-transform: scale(0.95);
+		transform: scale(0.95);
+		-moz-filter: blur(0.1rem);
+		-webkit-filter: blur(0.1rem);
+		-ms-filter: blur(0.1rem);
+		filter: blur(0.1rem);
+		opacity: 0;
+	}
+
+	body.is-preload #header {
+		-moz-filter: blur(0.125rem);
+		-webkit-filter: blur(0.125rem);
+		-ms-filter: blur(0.125rem);
+		filter: blur(0.125rem);
+	}
+
+		body.is-preload #header > * {
 			opacity: 0;
 		}
 
-		body.is-preload #header {
-			-moz-filter: blur(0.125rem);
-			-webkit-filter: blur(0.125rem);
-			-ms-filter: blur(0.125rem);
-			filter: blur(0.125rem);
+		body.is-preload #header .content .inner {
+			max-height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			opacity: 0;
 		}
 
-			body.is-preload #header > * {
-				opacity: 0;
-			}
+	@media screen and (max-width: 980px) {
 
-			body.is-preload #header .content .inner {
-				max-height: 0;
-				padding-top: 0;
-				padding-bottom: 0;
-				opacity: 0;
-			}
+		#header .content p br {
+			display: none;
+		}
+	}
 
-		@media screen and (max-width: 980px) {
+	@media screen and (max-width: 736px) {
 
-			#header .content p br {
-				display: none;
-			}
-
+		#header > * {
+			margin-top: 2rem;
 		}
 
-		@media screen and (max-width: 736px) {
-
-			#header > * {
-				margin-top: 2rem;
+			#header > *:before {
+				top: calc(-2rem - 1px);
+				height: calc(2rem + 1px);
 			}
 
-				#header > *:before {
-					top: calc(-2rem - 1px);
-					height: calc(2rem + 1px);
-				}
+		#header .logo {
+			width: 4.75rem;
+			height: 4.75rem;
+			line-height: 4.75rem;
+		}
 
-			#header .logo {
-				width: 4.75rem;
-				height: 4.75rem;
-				line-height: 4.75rem;
+			#header .logo .icon:before {
+				font-size: 1.75rem;
 			}
 
-				#header .logo .icon:before {
-					font-size: 1.75rem;
-				}
+		#header .content .inner {
+			padding: 2.5rem 1rem;
+		}
+
+		#header .content p {
+			line-height: 1.875;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+
+		#header {
+			padding: 1.5rem 0;
+		}
 
 			#header .content .inner {
-				padding: 2.5rem 1rem;
+				padding: 2.5rem 0;
 			}
 
-			#header .content p {
-				line-height: 1.875;
+			#header nav ul {
+				-moz-flex-direction: column;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				min-width: 10rem;
+				max-width: 100%;
 			}
 
-		}
-
-		@media screen and (max-width: 480px) {
-
-			#header {
-				padding: 1.5rem 0;
-			}
-
-				#header .content .inner {
-					padding: 2.5rem 0;
+				#header nav ul li {
+					border-left: 0;
+					border-top: solid 1px #ffffff;
 				}
 
-				#header nav ul {
-					-moz-flex-direction: column;
-					-webkit-flex-direction: column;
-					-ms-flex-direction: column;
-					flex-direction: column;
-					min-width: 10rem;
-					max-width: 100%;
-				}
-
-					#header nav ul li {
-						border-left: 0;
-						border-top: solid 1px #ffffff;
+					#header nav ul li:first-child {
+						border-top: 0;
 					}
 
-						#header nav ul li:first-child {
-							border-top: 0;
-						}
+					#header nav ul li a {
+						height: 3rem;
+						line-height: 3rem;
+						min-width: 0;
+						width: 100%;
+					}
 
-						#header nav ul li a {
-							height: 3rem;
-							line-height: 3rem;
-							min-width: 0;
-							width: 100%;
-						}
+			#header nav.use-middle:after {
+				display: none;
+			}
+	}
 
-				#header nav.use-middle:after {
-					display: none;
-				}
-
-		}
-
-/* Main */
+	/* Main */
 
 	#main {
 		-moz-flex-grow: 1;
@@ -1545,7 +1554,7 @@ input, select, textarea {
 			-webkit-transition: opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out;
 			-ms-transition: opacity 0.325s ease-in-out, -ms-transform 0.325s ease-in-out;
 			transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
-			padding: 4.5rem 2.5rem 1.5rem 2.5rem ;
+			padding: 4.5rem 2.5rem 1.5rem 2.5rem;
 			position: relative;
 			width: 40rem;
 			max-width: 100%;
@@ -1602,31 +1611,29 @@ input, select, textarea {
 					background-color: rgba(255, 255, 255, 0.175);
 				}
 
-		@media screen and (max-width: 736px) {
+	@media screen and (max-width: 736px) {
 
-			#main article {
-				padding: 3.5rem 2rem 0.5rem 2rem ;
-			}
-
-				#main article .close:before {
-					top: 0.875rem;
-					left: 0.875rem;
-					width: 2.25rem;
-					height: 2.25rem;
-					background-size: 14px 14px;
-				}
-
+		#main article {
+			padding: 3.5rem 2rem 0.5rem 2rem;
 		}
 
-		@media screen and (max-width: 480px) {
-
-			#main article {
-				padding: 3rem 1.5rem 0.5rem 1.5rem ;
+			#main article .close:before {
+				top: 0.875rem;
+				left: 0.875rem;
+				width: 2.25rem;
+				height: 2.25rem;
+				background-size: 14px 14px;
 			}
+	}
 
+	@media screen and (max-width: 480px) {
+
+		#main article {
+			padding: 3rem 1.5rem 0.5rem 1.5rem;
 		}
+	}
 
-/* Footer */
+	/* Footer */
 
 	#footer {
 		-moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
@@ -1647,18 +1654,18 @@ input, select, textarea {
 			text-transform: uppercase;
 		}
 
-		body.is-article-visible #footer {
-			-moz-transform: scale(0.95);
-			-webkit-transform: scale(0.95);
-			-ms-transform: scale(0.95);
-			transform: scale(0.95);
-			-moz-filter: blur(0.1rem);
-			-webkit-filter: blur(0.1rem);
-			-ms-filter: blur(0.1rem);
-			filter: blur(0.1rem);
-			opacity: 0;
-		}
+	body.is-article-visible #footer {
+		-moz-transform: scale(0.95);
+		-webkit-transform: scale(0.95);
+		-ms-transform: scale(0.95);
+		transform: scale(0.95);
+		-moz-filter: blur(0.1rem);
+		-webkit-filter: blur(0.1rem);
+		-ms-filter: blur(0.1rem);
+		filter: blur(0.1rem);
+		opacity: 0;
+	}
 
-		body.is-preload #footer {
-			opacity: 0;
-		}
+	body.is-preload #footer {
+		opacity: 0;
+	}
